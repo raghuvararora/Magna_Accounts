@@ -1,0 +1,67 @@
+<html>
+<head>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
+	
+</script>
+</head>
+<body>
+name  <input type="text" name="name" id="name" value=<%= name %> readonly="readonly"> 
+<button text="post" id="nameButton">edit</button>
+<br>
+address  <input type="text" name="address" id="address" value=<%= address %> readonly="readonly">
+<button text="post" id="addressButton">edit</button>
+<br>
+email    <input type="text" name="email" id="email" value=<%= email %> readonly="readonly">
+<button text="post" id="emailButton">edit</button>
+<br>
+contact  <input type="text" name="contact" id="contact" value=<%= contact %> readonly="readonly">
+<button text="post" id="contactButton">edit</button>
+<br>
+gst      <input type="text" name="gst" id="gst" value=<%= gst %> readonly="readonly">
+<button text="post" id="gstButton">edit</button>
+<br>
+<button text="post" id="submit"></button>
+
+<script>
+
+$("#nameButton").click(function(){
+    var name= $("#name")
+    name.removeAttr("readonly");
+});
+
+$("#addressButton").click(function(){
+    var name= $("#address")
+    name.removeAttr("readonly");
+});
+
+$("#emailButton").click(function(){
+    var name= $("#email")
+    name.removeAttr("readonly");
+});
+
+$("#contactButton").click(function(){
+    var name= $("#contact")
+    name.removeAttr("readonly");
+});
+
+$("#gstButton").click(function(){
+    var name= $("#gst")
+    name.removeAttr("readonly");
+});
+
+
+$("#submit").click(function(){
+	var name=$("#name").text;
+	var address=$("#address").text;
+	var email=$("#email").text;
+	var contact=$("#contact").text;
+    var gst=$("#gst").text;
+    var data={"name":name, "address":address, "email":email, "contact":contact, "gst":gst};
+    
+	$put("/company/", function(data, status){
+		console.log("data posted");
+	}
+)});
+</script>
+</body>
+</html>

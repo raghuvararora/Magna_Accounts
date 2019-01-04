@@ -1,11 +1,12 @@
-var mysql      = require('mysql');
-var express    =require("express");
-var bodyParser =require('body-parser');
+let mysql      =require('mysql');
+let express    =require("express");
+let bodyParser =require('body-parser');
+let ejs        =require("ejs");
 
 
 
-var app = express();
-var connection = mysql.createConnection({
+let app = express();
+let connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     //socketPath: 'mysql-socket-path',
@@ -15,6 +16,7 @@ var connection = mysql.createConnection({
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.set("view engine", "ejs");
 
 // connection.connect((err)=> {
 //     if (err) {
@@ -26,12 +28,22 @@ app.use(bodyParser.json());
 //   });
 
 app.get("/company/new", (req, res)=>{
-    res.send("");
+    //code to render newCompany form 
+    console.log("yoy")
+    res.render("newCompany.ejs");
 });
 app.post("/company/new",(req, res)=>{
     connection.query("insert into company_master set ? ",  req.body,(error, result, fields)=>{
-        if(error){
-            console.log("try again")
+        if(error.fatal){
+            //error 500
+        }
+        else if(loggedIn()){
+            console.log("pass");
+            //error 403 forbidden
+        }
+        else{
+            //response 201
+            res.redirect(201, "/company/"+result.insertId)
         }
     } )
     
@@ -41,6 +53,9 @@ app.get("/company/:id/edit", (req, res)=>{
         if(error){
             //render /comapny/new template with  existing data
             console.log("error in  retrieving");
+        }
+        else{
+            res.render("editCompany.ejs", result[0] );
         }
     } )
 });
@@ -55,10 +70,15 @@ app.post("/item/new")
 app.put("/item/:id")
 
 
-connection.query("show databases;", (error, result,fields)=>{
-      console.log(result[1].Database);
-  })
+// connection.query("use mysql;", (error, result,fields)=>{
+//       console.log(result);
+//   })
+
+// connection.query("select host, db, user from db where db like 'sys' ;  ", (error, result,fields)=>{
+//     console.log(result);
+// })
+
 
 connection.end();
 
-app.listen(8080, "localhost",()=>{console.log("hello");})
+app.listen(8008,()=>{console.log("hello");})
