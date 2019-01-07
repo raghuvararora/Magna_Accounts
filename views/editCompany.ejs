@@ -20,7 +20,8 @@ contact  <input type="text" name="contact" id="contact" value=<%= contact %> rea
 gst      <input type="text" name="gst" id="gst" value=<%= gst %> readonly="readonly">
 <button text="post" id="gstButton">edit</button>
 <br>
-<button text="post" id="submit"></button>
+<!-- <butto text="post" id="submit"></button> -->
+<input type="button" onclick="" id="submit" value="submit">
 
 <script>
 
@@ -51,17 +52,24 @@ $("#gstButton").click(function(){
 
 
 $("#submit").click(function(){
-	var name=$("#name").text;
-	var address=$("#address").text;
-	var email=$("#email").text;
-	var contact=$("#contact").text;
-    var gst=$("#gst").text;
+	var name=$("#name").val();
+	var address=$("#address").val();
+	var email=$("#email").val();
+	var contact=$("#contact").val();
+    var gst=$("#gst").val();
     var data={"name":name, "address":address, "email":email, "contact":contact, "gst":gst};
     
-	$put("/company/", function(data, status){
-		console.log("data posted");
-	}
-)});
+	$.ajax({
+    url: window.location.href, // your api url
+    // jQuery < 1.9.0 -> use type
+    // jQuery >= 1.9.0 -> use method
+    method: 'PUT', // method is any HTTP method
+    "data":data , // data as js object
+    success: function() {
+        console.log("success")
+    }
+});
+});
 </script>
 </body>
 </html>

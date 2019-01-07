@@ -15,20 +15,25 @@ contact  <input type="text" name="contact" id="contact">
 <br>
 gst      <input type="text" name="gst" id="gst">
 <br>
-<button text="post" id="submit">submit</button>
+<!-- <button text="post" id="submit">submit</button> -->
+<input type="button" onclick="" id="submit" value="submit">
 </body>
+
 
 <script>
 
 $("#submit").click(function(){
-	var name=$("#name").text;
-	var address=$("#address").text;
-	var email=$("#email").text;
-	var contact=$("#contact").text;
-    var gst=$("#gst").text;
-    var data={"name":name, "address":address, "email":email, "contact":contact, "gst":gst};
+	var name=$("#name").val();
+	var address=$("#address").val();
+	var email=$("#email").val();
+	var contact=$("#contact").val();
+    var gst=$("#gst").val();
+	var data={"name":name, "address":address, "email":email, "contact":contact, "gst":gst};
+	
+	console.log(data);
     
-	$post("/company/new", (data, status)=>{
+	$.post("/company/new", data, 
+	function(data, status){
 		console.log("data posted");
 	}
 )});
