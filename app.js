@@ -1,18 +1,17 @@
-let mysql      =require('mysql');
-let express    =require("express");
-let bodyParser =require('body-parser');
-let ejs        =require("ejs");
-let mySQLConfig=require("./config.js");
+const mysql = require('mysql');
+const express = require('express');
+const bodyParser = require('body-parser');
+const ejs = require('ejs');
+const mySQLConfig = require('./config.js');
 
 
-let app = express();
-let connection = mysql.createConnection(mySQLConfig);
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 
-app.use("/", require("./routes/company.js"));
+app.use('/', require('./routes/company.js'));
 
-app.listen(8008,()=>{console.log("hello");})
+app.listen(8008, () => { console.log('hello'); });
