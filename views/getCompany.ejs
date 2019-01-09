@@ -5,42 +5,30 @@
 </script>
 </head>
 <body>
-name  <input type="text" name="name" id="name" value=<%= name %> readonly="readonly"> 
-<br>
-address  <input type="text" name="address" id="address" value=<%= address %> readonly="readonly">
-<br>
-email    <input type="text" name="email" id="email" value=<%= email %> readonly="readonly">
-<br>
-contact  <input type="text" name="contact" id="contact" value=<%= contact %> readonly="readonly">
 
 <br>
-gst      <input type="text" name="gst" id="gst" value=<%= gst %> readonly="readonly">
-<br>
+<table style="width:100%">
+        <tr>
+          <th> id</th>
+          <th>name</th>
+          <th>address</th> 
+          <th>email</th>
+          <th>contact</th>
+          <th>gst</th>
+        </tr>
+        <%rows.forEach(function(company){%>
+            <tr>    
+                    <td><%=company.id%></td>
+                    <td><%=company.name%></td>
+                    <td><%=company.address%></td> 
+                    <td><%=company.email%></td>
+                    <td><%=company.contact%></td>
+                    <td><%=company.gst%></td>
+            </tr>
+       <% }) %>
+
+      </table>
 <!-- <butto text="post" id="submit"></button> -->
-<input type="button" onclick="" id="submit" value="submit">
 
-<script>
-
-
-$("#submit").click(function(){
-	var name=$("#name").val();
-	var address=$("#address").val();
-	var email=$("#email").val();
-	var contact=$("#contact").val();
-    var gst=$("#gst").val();
-    var data={"name":name, "address":address, "email":email, "contact":contact, "gst":gst};
-    
-	$.ajax({
-    url: window.location.href, // your api url
-    // jQuery < 1.9.0 -> use type
-    // jQuery >= 1.9.0 -> use method
-    method: 'PUT', // method is any HTTP method
-    "data":data , // data as js object
-    success: function() {
-        console.log("success")
-    }
-});
-});
-</script>
 </body>
 </html>

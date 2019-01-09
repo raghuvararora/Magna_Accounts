@@ -2,6 +2,7 @@ let mysql      =require('mysql');
 let express    =require("express");
 let router     =express.Router();
 let mySQLConfig=require("../config.js");
+let knex       =require("../knex.js");
 
 
 let connection = mysql.createConnection(mySQLConfig);
@@ -68,5 +69,13 @@ router.put("/company/:id/edit", (req, res)=>{
         }
     })
 });
+
+router.get("/company", (req,res)=>{
+    knex('company_master').
+        then(rows=>{
+            console.log("right here,", rows[0].name);
+            res.render("getCompany.ejs",{rows:rows});
+        })
+} )
 
 module.exports=router;
