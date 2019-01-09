@@ -10,14 +10,14 @@ var knex = require('knex')({
     }
   });
 
-let pg=knex('company_master').insert({name:'kjkjjk',
-address:'adr231',
-email:'gmial',
-contact:'324234',
-gst:'2334ik4k'}).returning('*').toString();
+// let pg=knex('company_master').insert({name:'kjkjjk',
+// address:'adr231',
+// email:'gmial',
+// contact:'324234',
+// gst:'2334ik4k'}).returning('*').toString();
 
-console.log(pg);
-// console.log(knex.select().from("company_master"));
+// console.log(pg);
+// // console.log(knex.select().from("company_master"));
 
 module.exports=knex;
 
