@@ -1,34 +1,49 @@
 <html>
-<head>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
-	
-</script>
-</head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+                <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                
+                <!-- Latest compiled JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
 <body>
 
 <br>
-<table style="width:100%">
-        <tr>
-          <th> id</th>
-          <th>name</th>
-          <th>address</th> 
-          <th>email</th>
-          <th>contact</th>
-          <th>gst</th>
-        </tr>
-        <%rows.forEach(function(company){%>
-            <tr>    
-                    <td><%=company.id%></td>
-                    <td><%=company.name%></td>
-                    <td><%=company.address%></td> 
-                    <td><%=company.email%></td>
-                    <td><%=company.contact%></td>
-                    <td><%=company.gst%></td>
-            </tr>
-       <% }) %>
 
-      </table>
-<!-- <butto text="post" id="submit"></button> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table  class="table table-bordered table-hover">
+          
+            <thead>
+            <tr>
+                    <th> id</th>
+                    <th>name</th>
+                    <th>address</th> 
+                    <th>email</th>
+                    <th>contact</th>
+                    <th>gst</th>
+            </tr>
+          </thead>
+          <tbody>
+                <%rows.forEach(function(company){%>
+                    <tr>    
+                            <td><%=company.id%></td>
+                            <td><%=company.name%></td>
+                            <td><%=company.address%></td> 
+                            <td><%=company.email%></td>
+                            <td><%=company.contact%></td>
+                            <td><%=company.gst%></td>
+                    </tr>
+               <% }) %>
+          </tbody>
+          
+        </table>
 
 </body>
 </html>

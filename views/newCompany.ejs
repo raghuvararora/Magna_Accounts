@@ -1,27 +1,89 @@
 <html>
-<head>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
-	
-</script>
-</head>
+		<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+				
+				<!-- jQuery library -->
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+				
+				<!-- Latest compiled JavaScript -->
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		</head>
 <body>
-name  <input type="text" name="name" id="name">
-<br>
-address  <input type="text" name="address" id="address">
-<br>
-email    <input type="text" name="email" id="email">
-<br>
-contact  <input type="text" name="contact" id="contact">
-<br>
-gst      <input type="text" name="gst" id="gst">
-<br>
-<!-- <button text="post" id="submit">submit</button> -->
-<input type="button" onclick="" id="submit" value="submit">
+
+<div class="container well form-horizontal">
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Name</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <input name="name" placeholder="Name" class="form-control" id="name" type="text">
+    </div>
+  </div>
+</div>
+
+
+       <div class="form-group">
+  <label class="col-md-4 control-label">E-Mail</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <input name="email" id="email" placeholder="E-Mail Address" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+
+
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Contact</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <input name="phone" id="contact" placeholder="(845)555-1212" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+
+      
+<div class="form-group">
+  <label class="col-md-4 control-label">Address</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <input name="address" id="address"placeholder="Address" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">GST</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <input name="zip" id="gst" placeholder="GST" class="form-control"  type="text">
+    </div>
+</div>
+</div>
+
+
+
+
+<div class="form-group">
+		<label class="col-md-4 control-label"></label>
+		<div class="col-md-4">
+		  <div type="button" id="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></div>
+		</div>
+</div>
+
+
+
 </body>
 
 
 <script>
-
 $("#submit").click(function(){
 	var name=$("#name").val();
 	var address=$("#address").val();
