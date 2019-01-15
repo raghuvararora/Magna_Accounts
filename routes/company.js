@@ -32,7 +32,7 @@ router.post( "/company/new", ( req, res ) => {
         .returning( "id" )
         .then( ( id ) => {
             console.log( id, "right here" );
-            res.redirect( 201, "/company/" + id );
+            res.redirect( 201, `/company/${  id}` );
         } )
         .catch( ( error ) => {
             console.log( "error inserting", error );
@@ -67,21 +67,38 @@ router.get( "/company/:id", ( req, res ) => {
 } );
 
 router.get( "/company/:id/edit", ( req, res ) => {
-    connection.query( " select * from company_master where id=?;", parseInt( req.params.id ), ( error, result, fields ) => {
-        if ( error ) {
-            // render /comapny/new template with  existing data
-            console.log( "error in  retrieving", error );
-        } else {
-            res.render( "editCompany.ejs", result[ 0 ] );
-        }
-    } );
+    // connection.query( " use magnaacounts; select * from company_master where id=?;", parseInt( req.params.id ), ( error, result, fields ) => {
+    //     if ( error ) {
+    //         // render /comapny/new template with  existing data
+    //         console.log( "error in  retrieving", error );
+    //     } else {
+    //         res.render( "editCompany.ejs", result[ 0 ] );
+    //     }
+    // } );
+    knex( "company_master" )
+        .where( { id: req.params.id } )
+        .then( ( row ) => {
+            console.log( row );
+            res.render( "editCompany.ejs", { row: row[ 0 ] } );
+        } )
+        .catch( ( error ) => {
+            console.log( error );
+            res.send();
+        } );
 } );
 router.put( "/company/:id/edit", ( req, res ) => {
-    connection.query( "update company_master set ? where id=? ", [ req.body, req.params.id ], ( error, result, fields ) => {
-        if ( error ) {
-            console.log( "try again later" );
-        }
-    } );
+    // connection.query( "update company_master set ? where id=? ", [ req.body, req.params.id ], ( error, result, fields ) => {
+    //     if ( error ) {
+    //         console.log( "try again later", error );
+    //     }
+    // } );
+    knex( "company_master" )
+        .where( { id: req.params.id } )
+        .update( req.body )
+        .catch( ( error ) => {
+            console.log( error );
+            res.send();
+        } );
 } );
 
 router.get( "/company", ( req, res ) => {
