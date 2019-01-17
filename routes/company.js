@@ -1,25 +1,17 @@
 const mysql = require( "mysql" );
 const express = require( "express" );
 
-const mySQLConfig = require( "../config.js" );
 const knex = require( "../knex.js" );
 
 const router = express.Router();
 
-const connection = mysql.createConnection( mySQLConfig );
-
 router.get( "/company/new", ( req, res ) => {
     // code to render newCompany form
-    console.log( "yoy" );
     res.render( "newCompany.ejs" );
-    connection.query( "show databases", ( error, result, fields ) => {
-        console.log( result );
-    } );
 } );
+
 router.post( "/company/new", ( req, res ) => {
-    console.log( "right here sir", req.body );
     const data = req.body;
-    console.log( data.name );
 
     knex( "company_master" )
         .insert( {
@@ -31,8 +23,6 @@ router.post( "/company/new", ( req, res ) => {
         } )
         .returning( "id" )
         .then( ( id ) => {
-            console.log( id, "right here" );
-            // res.redirect( `/company/`+ id );
             res.setHeader( "Content-Type", "application/json" );
             res.send( { data: id } );
         } )
@@ -59,7 +49,6 @@ router.get( "/company/:id", ( req, res ) => {
     knex( "company_master" )
         .where( { id: req.params.id } )
         .then( ( row ) => {
-            console.log( row );
             res.render( "listCompany.ejs", { row: row[ 0 ] } );
         } )
         .catch( ( error ) => {
@@ -69,18 +58,9 @@ router.get( "/company/:id", ( req, res ) => {
 } );
 
 router.get( "/company/:id/edit", ( req, res ) => {
-    // connection.query( " use magnaacounts; select * from company_master where id=?;", parseInt( req.params.id ), ( error, result, fields ) => {
-    //     if ( error ) {
-    //         // render /comapny/new template with  existing data
-    //         console.log( "error in  retrieving", error );
-    //     } else {
-    //         res.render( "editCompany.ejs", result[ 0 ] );
-    //     }
-    // } );
     knex( "company_master" )
         .where( { id: req.params.id } )
         .then( ( row ) => {
-            console.log( row );
             res.render( "editCompany.ejs", { row: row[ 0 ] } );
         } )
         .catch( ( error ) => {
@@ -101,7 +81,6 @@ router.put( "/company/:id/edit", ( req, res ) => {
 router.get( "/company", ( req, res ) => {
     knex( "company_master" )
         .then( ( rows ) => {
-            console.log( "right here,", rows[ 0 ] );
             res.render( "getCompany.ejs", { rows } );
         } );
 } );
