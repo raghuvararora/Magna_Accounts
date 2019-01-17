@@ -32,7 +32,9 @@ router.post( "/company/new", ( req, res ) => {
         .returning( "id" )
         .then( ( id ) => {
             console.log( id, "right here" );
-            res.redirect( 201, `/company/${  id}` );
+            // res.redirect( `/company/`+ id );
+            res.setHeader( "Content-Type", "application/json" );
+            res.send( { data: id } );
         } )
         .catch( ( error ) => {
             console.log( "error inserting", error );
@@ -87,11 +89,6 @@ router.get( "/company/:id/edit", ( req, res ) => {
         } );
 } );
 router.put( "/company/:id/edit", ( req, res ) => {
-    // connection.query( "update company_master set ? where id=? ", [ req.body, req.params.id ], ( error, result, fields ) => {
-    //     if ( error ) {
-    //         console.log( "try again later", error );
-    //     }
-    // } );
     knex( "company_master" )
         .where( { id: req.params.id } )
         .update( req.body )
