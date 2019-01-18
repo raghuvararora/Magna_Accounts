@@ -1,5 +1,5 @@
 
-#Instructions to setup
+# Instructions to setup
 This requires presence of NPM and Node.js on system.
 
 To install these kindly refer to https://docs.npmjs.com/getting-started/installing-node
@@ -12,7 +12,7 @@ To install these kindly refer to https://docs.npmjs.com/getting-started/installi
 
 
 
-##Now to run the code
+## Now to run the code
 
 1.) Using the terminal type
 
@@ -25,17 +25,17 @@ To install these kindly refer to https://docs.npmjs.com/getting-started/installi
 
 
 
-#company routes are given below
+# company routes are given below
 
-##New Company_master form
+## New Company_master form
     	http://localhost:8008/company/new
     
-##List item from  company_master
+## List item from  company_master
     	http://localhost:8008/company/{company_id}
     	
-##List all items from company_master
+## List all items from company_master
 	    http://localhost:8008/company
 
-##edit/delete item from company_master 
+## edit/delete item from company_master 
 	http://localhost:8008/company/{company_id}/edit
 
