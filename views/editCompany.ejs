@@ -118,8 +118,11 @@
 <div class="form-group">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
-    <button type="submit" id="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+    <button type="submit" id="submit" class="btn btn-success" >Submit <span class="glyphicon glyphicon-send"></span></button>
+    <button type="submit" id="delete" class="btn btn-danger" >Delete <span class="glyphicon glyphicon-remove"></span></button>
   </div>
+  
+  
 </div>
 
 </fieldset>
@@ -195,8 +198,16 @@ $("#submit").click(function(){
 });
 });
 
-
-
+$("#delete").click(function(){
+	$.ajax({
+    url: window.location.href, // your api url
+    method: 'DELETE', // method is any HTTP method
+    success: function(result) {
+        window.location.replace("/company/new");
+        console.log("success", result);
+    }
+});
+});
 
 </script>
 

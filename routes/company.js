@@ -68,6 +68,17 @@ router.get( "/company/:id/edit", ( req, res ) => {
             res.send();
         } );
 } );
+
+router.delete( "/company/:id/edit", ( req, res ) => {
+    console.log( "dlelte " );
+    knex( "company_master" )
+        .where( { id: req.params.id } )
+        .del()
+        .catch( ( error ) => {
+            console.log( error );
+        } );
+} );
+
 router.put( "/company/:id/edit", ( req, res ) => {
     knex( "company_master" )
         .where( { id: req.params.id } )
