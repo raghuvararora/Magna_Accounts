@@ -61,7 +61,11 @@ router.get( "/company/:id/edit", ( req, res ) => {
     knex( "company_master" )
         .where( { id: req.params.id } )
         .then( ( row ) => {
-            res.render( "editCompany.ejs", { row: row[ 0 ] } );
+            if ( row[ 0 ] ) {
+                res.render( "editCompany.ejs", { row: row[ 0 ] } );
+            } else {
+                res.send( 404, `no record for id:${ req.params.id }` );
+            }
         } )
         .catch( ( error ) => {
             console.log( error );
@@ -74,6 +78,12 @@ router.delete( "/company/:id/edit", ( req, res ) => {
     knex( "company_master" )
         .where( { id: req.params.id } )
         .del()
+        .then(
+            () => {
+                res.setHeader( "Content-Type", "application/json" );
+                res.redirect( 301, "newCompany.ejs" );
+            },
+        )
         .catch( ( error ) => {
             console.log( error );
         } );
@@ -83,15 +93,19 @@ router.put( "/company/:id/edit", ( req, res ) => {
     knex( "company_master" )
         .where( { id: req.params.id } )
         .update( req.body )
+        .then( () => {
+            res.setHeader( "Content-Type", "application/json" );
+            res.redirect( 301, `/company/${ req.params.id }` );
+        } )
         .catch( ( error ) => {
             console.log( error );
-            res.send();
         } );
 } );
 
 router.get( "/company", ( req, res ) => {
     knex( "company_master" )
         .then( ( rows ) => {
+            console.log(rows);
             res.render( "getCompany.ejs", { rows } );
         } );
 } );

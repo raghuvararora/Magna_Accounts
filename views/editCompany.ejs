@@ -12,7 +12,7 @@
 <body>
 <div class="container">
 
-    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <div class="well form-horizontal" action=" " method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
@@ -126,7 +126,7 @@
 </div>
 
 </fieldset>
-</form>
+</div>
 </div>
     </div><!-- /.container -->
 </body>
@@ -195,7 +195,7 @@ $("#submit").click(function(){
     success: function() {
         console.log("success")
     }
-});
+}).then(window.location.replace("/company/"+location.pathname.split("/")[2]));
 });
 
 $("#delete").click(function(){
@@ -203,10 +203,10 @@ $("#delete").click(function(){
     url: window.location.href, // your api url
     method: 'DELETE', // method is any HTTP method
     success: function(result) {
-        window.location.replace("/company/new");
         console.log("success", result);
     }
-});
+
+}).then(window.location.replace("/company/new"))
 });
 
 </script>
