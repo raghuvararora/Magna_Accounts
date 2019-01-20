@@ -12,4 +12,4 @@ app.set( "view engine", "ejs" );
 
 app.use( "/", require( "./routes/company.js" ) );
 
-app.listen( 8008, () => { console.log( "hello" ); } );
+app.listen( process.env.PORT||8008, process.env.IP, () => { console.log( "on port ", process.env.PORT ); } );
