@@ -21,25 +21,22 @@
         <table  class="table table-bordered table-hover">
           
             <thead>
-            <tr>
-                    <th> id</th>
-                    <th>name</th>
-                    <th>address</th> 
-                    <th>email</th>
-                    <th>contact</th>
-                    <th>gst</th>
-            </tr>
+                    <tr>
+                            <% props.forEach(function(prop){%>
+                                <th> <%=prop%></th>
+                            <%})%>
+                                
+                    </tr>
           </thead>
           <tbody>
-                <%rows.forEach(function(company){%>
-                    <tr>    
-                            <td><%=company.id%></td>
-                            <td><%=company.name%></td>
-                            <td><%=company.address%></td> 
-                            <td><%=company.email%></td>
-                            <td><%=company.contact%></td>
-                            <td><%=company.gst%></td>
-                    </tr>
+                <%(rows).forEach(function(company){%>
+                    
+                        <tr>
+                            <%props.forEach(function(prop){%>
+                                <td> <%=company[prop]%></td>
+                            <%})%>
+                                
+                        </tr>
                <% }) %>
           </tbody>
           
