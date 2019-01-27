@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.post( "/company/new", ( req, res ) => {
     const data = req.body;
+    console.log(req.body);
 
     knex( "company_master" )
         .insert( {

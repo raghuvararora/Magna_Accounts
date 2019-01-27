@@ -6,32 +6,33 @@ const knex = require( "../knex.js" );
 const router = express.Router();
 
 module.exports = ( args ) => {
-    console.log( "master", args );
     router.get( `/${ args }/new`, ( req, res ) => {
     // code to render newCompany form
-        res.render( args+"/"+`new${ args }.ejs` );
+        res.render( `${args}/`+`new${ args }.ejs` );
     } );
 
-    
-
-    router.get( "/"+args+"/:id", ( req, res ) => {
-        knex( args+"_master" )
+    router.get( `/${args}/:id`, ( req, res ) => {
+        knex( `${args}_master` )
             .where( { id: req.params.id } )
             .then( ( row ) => {
-                res.render( "listMaster.ejs", { row: row[ 0 ] } );
+                if(row[0]){
+                    res.render( "listMaster.ejs", { row: row[ 0 ] } );
+                }
+                else {
+                    throw new Error("NO_DATA");
+                }
             } )
             .catch( ( error ) => {
-                console.log( error );
-                res.send();
+                throw new Error("SERVICE_UNAVAILABLE");
             } );
     } );
 
-    router.get( "/"+args+"/:id/edit", ( req, res ) => {
-        knex( args+"_master" )
+    router.get( `/${args}/:id/edit`, ( req, res ) => {
+        knex( `${args}_master` )
             .where( { id: req.params.id } )
             .then( ( row ) => {
                 if ( row[ 0 ] ) {
-                    res.render( args+"/edit"+args+".ejs", { row: row[ 0 ] } );
+                    res.render( `${args}/edit${args}.ejs`, { row: row[ 0 ] } );
                 } else {
                     res.send( 404, `no record for id:${ req.params.id }` );
                 }
@@ -42,15 +43,15 @@ module.exports = ( args ) => {
             } );
     } );
 
-    router.delete( "/"+args+"/:id/edit", ( req, res ) => {
+    router.delete( `/${args}/:id/edit`, ( req, res ) => {
         console.log( "dlelte " );
-        knex( args+"_master" )
+        knex( `${args}_master` )
             .where( { id: req.params.id } )
             .del()
             .then(
                 () => {
                     res.setHeader( "Content-Type", "application/json" );
-                    res.redirect( 301, args+"/new"+args+".ejs" );
+                    res.redirect( 301, `${args}/new${args}.ejs` );
                 },
             )
             .catch( ( error ) => {
@@ -64,7 +65,7 @@ module.exports = ( args ) => {
             .update( req.body )
             .then( () => {
                 res.setHeader( "Content-Type", "application/json" );
-                res.redirect( 301, `/${  args`/${ req.params.id }` }` );
+                res.redirect( 301, `/${ args`/${ req.params.id }` }` );
             } )
             .catch( ( error ) => {
                 console.log( error );
