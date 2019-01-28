@@ -34,12 +34,12 @@ module.exports = ( args ) => {
                 if ( row[ 0 ] ) {
                     res.render( `${args}/edit${args}.ejs`, { row: row[ 0 ] } );
                 } else {
-                    res.send( 404, `no record for id:${ req.params.id }` );
+                    //res.send( 404, `no record for id:${ req.params.id }` );
+                    throw new Error("NO_DATA");
                 }
             } )
             .catch( ( error ) => {
-                console.log( error );
-                res.send();
+                throw new Error("SERVICE_UNAVAILABLE");
             } );
     } );
 
@@ -68,7 +68,7 @@ module.exports = ( args ) => {
                 res.redirect( 301, `/${ args`/${ req.params.id }` }` );
             } )
             .catch( ( error ) => {
-                console.log( error );
+                throw new Error("SERVICE_UNAVAILABLE");
             } );
     } );
 

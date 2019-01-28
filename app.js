@@ -19,8 +19,9 @@ function call( a, b ) {
 }
 
 // app.use( "/", require( "./routes/company.js" ) );
-call( app, [ "company" ] );
+call( app, [ "company", "item" ] );
 app.use( "/", require( "./routes/company/company.js" ) );
+app.use( "/", require( "./routes/item/item.js" ) );
 
 app.get( "*", ( req, res ) => {
     throw new Error( "BAD_REQUEST" );

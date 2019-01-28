@@ -1,0 +1,206 @@
+<html>
+        <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+        <body>
+        <div class="container">
+        
+            <div class="well form-horizontal"  id="itemcode_form">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>new Item</legend>
+        
+        <!-- Text input-->
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Name</label>  
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input  name="name" id="name" placeholder="Name" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        
+        
+        <!-- Text input-->
+               <div class="form-group">
+          <label class="col-md-4 control-label">Category ID</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          <input name="categoryid" id="categoryid" placeholder="Category ID" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+        
+        
+        <!-- Text input-->
+               
+        <div class="form-group">
+          <label class="col-md-4 control-label">Item Code</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+          <input name="itemcode" id="itemcode" placeholder="Item Code" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+              
+        <div class="form-group">
+          <label class="col-md-4 control-label">HSN Code</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+          <input name="hsncode" id="hsncode" placeholder="HSN code" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+         
+        
+        
+        <!-- Select Basic -->
+           
+        
+        
+        <!-- Text input-->
+        
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">CGST</label>  
+           <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+          <input name="CGST" id="CGST" placeholder="CGST" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+                <label class="col-md-4 control-label">SGST</label>  
+                 <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input name="SGST" id="SGST" placeholder="SGST" class="form-control" type="text">
+                  </div>
+                </div>
+        </div>
+        <div class="form-group">
+                <label class="col-md-4 control-label">UNIT ID</label>  
+                 <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input name="UnitID" id="unitid" placeholder="UNIT ID" class="form-control" type="text">
+                  </div>
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label class="col-md-4 control-label">Description</label>  
+                 <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input name="Description" id="descriptiopn" placeholder="Description" class="form-control" type="text">
+                  </div>
+                </div>
+        </div>
+        
+        <div class="form-group">
+                <label class="col-md-4 control-label">Discount Applicable</label>  
+                 <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input name="Discount Applicable" id="discountapplicable" placeholder="Discount Applicable" class="form-control" type="text">
+                  </div>
+                </div>
+        </div>
+        <!-- radio checks -->
+        <div class="form-group">
+                <label class="col-md-4 control-label">Company ID</label>  
+                 <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input name="Company ID" id="companyid" placeholder="Company ID" class="form-control" type="text">
+                  </div>
+                </div>
+        </div>
+        
+        <!-- Text area -->
+          
+        
+        <!-- Success message -->
+        
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+            <button type="submit" id="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+          </div>
+        </div>
+        
+        </fieldset>
+      </div>
+        </div>
+            </div><!-- /.container -->
+      
+        
+    
+    </body>
+    
+    <script>
+    $("#submit").click(function(){
+        var name=$("#name").val();
+        var hsncode=$("#hsncode").val();
+        var categoryid=$("#categoryid").val();
+        var itemcode=$("#itemcode").val();
+        var CGST=$("#CGST").val();
+        var SGST=$("#SGST").val();
+        var unitid=$("#unitid").val();
+        var description=$("#description").val();
+        var discountapplicable=$("#discountapplicable").val();
+        var companyid=$("#companyid").val();
+
+        var data={
+            "name":name,
+            "hsncode":hsncode, 
+            "categoryid":categoryid, 
+            "itemcode":itemcode, 
+            "CGST":CGST,
+            "SGST":SGST,
+            "unitid":unitid,
+            "description":description, 
+            "discount_applicable":discountapplicable,
+            "companyid":companyid
+        };
+        
+        console.log(data);
+        
+        $.post("/item/new", data, 
+        function(data, status){
+            console.log("data posted");
+        }
+    ).then(function(res){
+      console.log(res.data);
+
+      window.location.replace("/item/"+res.data[0]);
+    })});
+    </script>
+    </html>
+    
+    
