@@ -19,6 +19,7 @@ const knex = require( "knex" )( {
         port: 3306,
         password: "qwert123",
         // socketPath: "/var/run/mysqld/mysqld.sock",
+        charset : 'utf8mb4',
         database: "magnaaccounts",
         debug: "verbose",
     },

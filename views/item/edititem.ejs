@@ -1,0 +1,297 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="well form-horizontal" action=" " method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>new Item master</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Name</label>  
+  <div class="col-md-4 c">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input id="name" name="first" placeholder="Name" class="form-control"  type="text" readonly="readonly" value=<%= row.name %>>
+    </div>
+  </div>
+  <div type="button" id="editname" class="btn btn-default" ><span class="glyphicon glyphicon-pencil"></span></div>
+  <div type="button" id="undoname" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+
+</div>
+
+<!-- Text input-->
+
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">Category ID</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input name="categoryid" id="categoryid" placeholder="Category ID" class="form-control"  type="text" readonly="readonly" value=<%= row.categoryid%>>
+    </div>
+  </div>
+  <div type="button" id="editcategoryid" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+    <div type="button" id="undocategoryid" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+
+</div>
+
+
+<!-- Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Item Code</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="itemcode" id="itemcode" placeholder="Item code" class="form-control" type="text" readonly="readonly" value=<%= row.itemcode%>>
+    </div>
+  </div>
+  <div type="button" id="edititemcode" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+    <div type="button" id="undoitemcode" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+
+</div>
+
+<!-- Text input-->
+      
+<div class="form-group">
+  <label class="col-md-4 control-label">HSN code</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="hsncode" id="hsncode" placeholder="HSN code" class="form-control" type="text" readonly="readonly" value=<%= row.hsncode %>>
+    </div>
+  </div>
+  <div type="button" id="edithsncode" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+    <div type="button" id="undohsncode" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+
+</div>
+
+<!-- Text input-->
+ 
+
+
+<!-- Select Basic -->
+   
+
+
+<!-- Text input-->
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">CGST</label>  
+   <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+  <input name="cgst" id="cgst" placeholder="CGST" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+    </div>
+  </div>
+  <div type="button" id="editcgst" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+    <div type="button" id="undocgst" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+
+</div>
+
+<div class="form-group">
+        <label class="col-md-4 control-label">SGST</label>  
+         <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+        <input name="sgst" id="sgst" placeholder="SGST" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+          </div>
+        </div>
+        <div type="button" id="editsgst" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+          <div type="button" id="undosgst" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+      
+      </div>
+
+      <div class="form-group">
+            <label class="col-md-4 control-label">UNit ID</label>  
+             <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+            <input name="unitID" id="unitid" placeholder="UNIT ID" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+              </div>
+            </div>
+            <div type="button" id="editunitid" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+              <div type="button" id="undounitid" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+          
+          </div>
+
+
+          <div class="form-group">
+                <label class="col-md-4 control-label">Description</label>  
+                 <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input name="description" id="description" placeholder="Description" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+                  </div>
+                </div>
+                <div type="button" id="editdescription" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+                  <div type="button" id="undodescription" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+              
+              </div>
+
+              <div class="form-group">
+                    <label class="col-md-4 control-label">Discount Applicable</label>  
+                     <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                    <input name="Discount Applicable" id="discountapplicable" placeholder="Discount Applicable" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+                      </div>
+                    </div>
+                    <div type="button" id="editdiscountapplicable" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+                      <div type="button" id="undodiscountapplicable" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+                  
+                  </div>
+
+                  <div class="form-group">
+                        <label class="col-md-4 control-label">Company ID</label>  
+                         <div class="col-md-4 inputGroupContainer">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                        <input name="companyid" id="companyid" placeholder="companyid" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+                          </div>
+                        </div>
+                        <div type="button" id="editcompanyid" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+                          <div type="button" id="undocompanyid" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+                      
+                      </div>
+
+<!-- radio checks -->
+
+<!-- Text area -->
+  
+
+<!-- Success message -->
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" id="submit" class="btn btn-success" >Submit <span class="glyphicon glyphicon-send"></span></button>
+    <button type="submit" id="delete" class="btn btn-danger" >Delete <span class="glyphicon glyphicon-remove"></span></button>
+  </div>
+  
+  
+</div>
+
+</fieldset>
+</div>
+</div>
+    </div><!-- /.container -->
+</body>
+
+<script>
+
+function undoChange(prop){
+	var prevval=$("#"+prop).val();
+	$("#"+prop).prop("disabled", false);
+	$("#edit"+prop).hide();
+	$("#undo"+prop).show();
+	$("#undo"+prop).click(function(){
+		$("#"+prop).val(prevval);
+	});
+}
+
+$("#editname").click(function(){
+    var name= $("#name")
+    name.removeAttr("readonly");
+    undoChange("name")
+
+});
+
+$("#edithsncode").click(function(){
+    var name= $("#hsncode")
+    name.removeAttr("readonly");
+    undoChange("hsncode")
+});
+
+$("#editcategoryid").click(function(){
+    var name= $("#categoryid")
+    name.removeAttr("readonly");
+        undoChange("categoryid")
+
+});
+
+$("#edititemcode").click(function(){
+    var name= $("#itemcode")
+    name.removeAttr("readonly");
+    undoChange("itemcode")
+
+});
+
+$("#editcgst").click(function(){
+    var name= $("#cgst")
+    name.removeAttr("readonly");
+    undoChange("cgst")
+
+});
+
+
+$("#submit").click(function(){
+	var name=$("#name").val();
+        var hsncode=$("#hsncode").val();
+        var categoryid=$("#categoryid").val();
+        var itemcode=$("#itemcode").val();
+        var CGST=$("#CGST").val();
+        var SGST=$("#SGST").val();
+        var unitid=$("#unitid").val();
+        var description=$("#description").val();
+        var discountapplicable=$("#discountapplicable").val();
+        var companyid=$("#companyid").val();
+
+        var data={
+            "name":name,
+            "hsncode":hsncode, 
+            "categoryid":categoryid, 
+            "itemcode":itemcode, 
+            "CGST":CGST,
+            "SGST":SGST,
+            "unitid":unitid,
+            "description":description, 
+            "discount_applicable":discountapplicable,
+            "companyid":companyid
+        };
+
+	$.ajax({
+    url: window.location.href, // your api url
+    // jQuery < 1.9.0 -> use type
+    // jQuery >= 1.9.0 -> use method
+    method: 'PUT', // method is any HTTP method
+    "data":data , // data as js object
+    success: function() {
+        console.log("success")
+    }
+}).then(window.location.replace("/item/"+location.pathname.split("/")[2]));
+});
+
+$("#delete").click(function(){
+	$.ajax({
+    url: window.location.href, // your api url
+    method: 'DELETE', // method is any HTTP method
+    success: function(result) {
+        console.log("success", result);
+    }
+
+}).then(window.location.replace("/item/new"))
+});
+
+</script>
+
+</html>
