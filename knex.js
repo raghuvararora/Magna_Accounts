@@ -25,13 +25,11 @@ const knex = require( "knex" )( {
     },
 } );
 
-// knex( "company_master" )
+// knex( "item_master" )
 //     .insert( {
 //         name: "kjkjjk",
-//         address: "adr231",
-//         email: "gmial",
-//         contact: "324234",
-//         gst: "2334ik4k",
+//         hsncode: "" || null,
+        
 //     } ).catch( error => ( console.log( error ) ) );
 
 // console.log(knex.select().from("company_master"));

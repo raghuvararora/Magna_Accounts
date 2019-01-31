@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -111,7 +112,7 @@
          <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-        <input name="sgst" id="sgst" placeholder="SGST" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+        <input name="sgst" id="sgst" placeholder="SGST" class="form-control" readonly="readonly" type="text" value=<%= row.sgst %>>
           </div>
         </div>
         <div type="button" id="editsgst" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
@@ -124,7 +125,7 @@
              <div class="col-md-4 inputGroupContainer">
               <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-            <input name="unitID" id="unitid" placeholder="UNIT ID" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+            <input name="unitID" id="unitid" placeholder="UNIT ID" class="form-control" readonly="readonly" type="text" value=<%= row.unitid %>>
               </div>
             </div>
             <div type="button" id="editunitid" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
@@ -138,7 +139,7 @@
                  <div class="col-md-4 inputGroupContainer">
                   <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                <input name="description" id="description" placeholder="Description" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+                <input name="description" id="description" placeholder="Description" class="form-control" readonly="readonly" type="text" value=<%= row.description %>>
                   </div>
                 </div>
                 <div type="button" id="editdescription" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
@@ -151,7 +152,7 @@
                      <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                    <input name="Discount Applicable" id="discountapplicable" placeholder="Discount Applicable" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+                    <input name="Discount Applicable" id="discountapplicable" placeholder="Discount Applicable" class="form-control" readonly="readonly" type="text" value=<%= row.discountapplicable %>>
                       </div>
                     </div>
                     <div type="button" id="editdiscountapplicable" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
@@ -164,7 +165,7 @@
                          <div class="col-md-4 inputGroupContainer">
                           <div class="input-group">
                               <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                        <input name="companyid" id="companyid" placeholder="companyid" class="form-control" readonly="readonly" type="text" value=<%= row.cgst %>>
+                        <input name="companyid" id="companyid" placeholder="companyid" class="form-control" readonly="readonly" type="text" value=<%= row.companyid %>>
                           </div>
                         </div>
                         <div type="button" id="editcompanyid" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
@@ -243,6 +244,41 @@ $("#editcgst").click(function(){
 
 });
 
+$("#editsgst").click(function(){
+    var name= $("#sgst")
+    name.removeAttr("readonly");
+    undoChange("sgst")
+
+});
+
+$("#editunitid").click(function(){
+    var name= $("#unitid")
+    name.removeAttr("readonly");
+    undoChange("unitid")
+
+});
+
+$("#editdescription").click(function(){
+    var name= $("#description")
+    name.removeAttr("readonly");
+    undoChange("description")
+
+});
+
+$("#editdiscountapplicable").click(function(){
+    var name= $("#discountapplicable")
+    name.removeAttr("readonly");
+    undoChange("discountapplicable")
+
+});
+
+$("#editcompanyid").click(function(){
+    var name= $("#companyid")
+    name.removeAttr("readonly");
+    undoChange("companyid");
+
+});
+
 
 $("#submit").click(function(){
 	var name=$("#name").val();
@@ -257,12 +293,12 @@ $("#submit").click(function(){
         var companyid=$("#companyid").val();
 
         var data={
-            "name":name,
+            "name": name,
             "hsncode":hsncode, 
             "categoryid":categoryid, 
             "itemcode":itemcode, 
-            "CGST":CGST,
-            "SGST":SGST,
+            "cgst":CGST,
+            "sgst":SGST,
             "unitid":unitid,
             "description":description, 
             "discount_applicable":discountapplicable,
@@ -278,7 +314,7 @@ $("#submit").click(function(){
     success: function() {
         console.log("success")
     }
-}).then(window.location.replace("/item/"+location.pathname.split("/")[2]));
+})//.then(window.location.replace("/item/"+location.pathname.split("/")[2]));
 });
 
 $("#delete").click(function(){

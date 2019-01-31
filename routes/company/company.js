@@ -1,6 +1,7 @@
 const knex = require( "../../knex.js" );
 const express=require("express");
 const router = express.Router();
+const args ="company";
 
 router.post( "/company/new", ( req, res ) => {
     const data = req.body;
@@ -36,6 +37,22 @@ router.post( "/company/new", ( req, res ) => {
 //         res.redirect(201, "/company/"+result.insertId)
 //     }
 // } )
+} );
+
+router.put( `/${ args }/:id/edit`, ( req, res ) => {
+    knex( `${ args }_master` )
+        .where( { id: req.params.id } )
+        .update( req.body )
+        .then( () => {
+            console.log(req.body);
+            res.setHeader( "Content-Type", "application/json" );
+            res.redirect( 301, `/${ args`/${ req.params.id }` }` );
+        } )
+        .catch( ( error ) => {
+            console.log("kljkljkjlkkjl",req.body);
+            console.log("dfsdfsfsfsfsdffffffffffffffff",error);
+            throw new Error("SERVICE_UNAVAILABLE");
+        } );
 } );
 
 module.exports=router;

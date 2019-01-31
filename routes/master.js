@@ -59,18 +59,21 @@ module.exports = ( args ) => {
             } );
     } );
 
-    router.put( `/${ args }/:id/edit`, ( req, res ) => {
-        knex( `${ args }_master` )
-            .where( { id: req.params.id } )
-            .update( req.body )
-            .then( () => {
-                res.setHeader( "Content-Type", "application/json" );
-                res.redirect( 301, `/${ args`/${ req.params.id }` }` );
-            } )
-            .catch( ( error ) => {
-                throw new Error("SERVICE_UNAVAILABLE");
-            } );
-    } );
+    // router.put( `/${ args }/:id/edit`, ( req, res ) => {
+    //     knex( `${ args }_master` )
+    //         .where( { id: req.params.id } )
+    //         .update( req.body )
+    //         .then( () => {
+    //             console.log(req.body);
+    //             res.setHeader( "Content-Type", "application/json" );
+    //             res.redirect( 301, `/${ args`/${ req.params.id }` }` );
+    //         } )
+    //         .catch( ( error ) => {
+    //             console.log("kljkljkjlkkjl",req.body);
+    //             console.log("dfsdfsfsfsfsdffffffffffffffff",error);
+    //             throw new Error("SERVICE_UNAVAILABLE");
+    //         } );
+    // } );
 
     router.get( `/${ args }`, ( req, res ) => {
         knex( `${ args }_master` )
