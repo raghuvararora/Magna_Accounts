@@ -1,10 +1,11 @@
 /* eslint-disable complexity */
 const express = require( "express" );
 const knex = require( "../../knex.js" );
-const sanitizer=require("../../modules/sanitizer.js")
+const sanitizer = require( "../../modules/sanitizer" );
 
 const router = express.Router();
 const args = "item";
+console.log( sanitizer.sanitizeNumber( "19" ) );
 
 router.post( "/item/new", ( req, res ) => {
     const data = req.body;
@@ -37,31 +38,35 @@ router.post( "/item/new", ( req, res ) => {
 
 router.put( `/${ args }/:id/edit`, ( req, res ) => {
     const data = req.body;
-    const inpdata = {
+    console.log( "here", req.body );
+    const inpdata={
         name: data.name,
-        categoryid: sanitizer.sanitizeNumber( data.categoryid ),
-        itemcode: data.itemcode || null,
+        categoryid: (sanitizer.sanitizeNumber( data.categoryid )),
+        itemcode: sanitizer.sanitizeNumber( data.itemcode ),
         hsncode: data.hsncode,
-        sellingprice: data.sellingprice || null,
-        cgst: data.cgst || null,
-        sgst: data.sgst || null,
+        sellingprice: sanitizer.sanitizeNumber( data.sellingprice ),
+        cgst: sanitizer.sanitizeNumber( data.cgst ),
+        sgst: sanitizer.sanitizeNumber( data.sgst ),
         description: data.description,
-        discount_applicable: data.discount_applicable || null,
-        companyid: data.companyid || null,
+        discount_applicable: sanitizer.sanitizeNumber( data.discount_applicable ),
+        companyid: sanitizer.sanitizeNumber( data.companyid ),
     };
+    console.log( "here2" );
+    console.log( inpdata );
     knex( `${ args }_master` )
         .where( { id: req.params.id } )
         .update( inpdata )
         .then( () => {
-            console.log( req.body );
+            console.log( "dsfsdfsdfsdsdfdsfdsf", inpdata );
             res.setHeader( "Content-Type", "application/json" );
-            res.redirect( 301, `/${ args`/${ req.params.id }` }` );
+            res.redirect( 200, `/${ args`/${ req.params.id }` }` );
         } )
         .catch( ( error ) => {
             console.log( "kljkljkjlkkjljk", data.categoryid, inpdata );
             console.log( "dfsdfsfsfsfsdffffffffffffffff", error );
             throw new Error( "SERVICE_UNAVAILABLE" );
         } );
+    console( "here2" );
 } );
 
 module.exports = router;

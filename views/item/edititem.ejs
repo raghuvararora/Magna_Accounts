@@ -82,6 +82,19 @@
 
 </div>
 
+<div class="form-group">
+    <label class="col-md-4 control-label">Selling Price</label>  
+     <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+    <input name="sellingprice" id="sellingprice" placeholder="Selling Price" class="form-control" readonly="readonly" type="text" value=<%= row.sellingprice %>>
+      </div>
+    </div>
+    <div type="button" id="editsellingprice" class="btn btn-default" > <span class="glyphicon glyphicon-pencil"></span></div>
+      <div type="button" id="undosellingprice" class="btn btn-default" style="display: none;" ><span class="glyphicon glyphicon-remove"></span></div>
+  
+  </div>
+
 <!-- Text input-->
  
 
@@ -278,6 +291,12 @@ $("#editcompanyid").click(function(){
     undoChange("companyid");
 
 });
+$("#editsellingprice").click(function(){
+    var name= $("#sellingprice")
+    name.removeAttr("readonly");
+    undoChange("sellingprice");
+
+});
 
 
 $("#submit").click(function(){
@@ -285,21 +304,23 @@ $("#submit").click(function(){
         var hsncode=$("#hsncode").val();
         var categoryid=$("#categoryid").val();
         var itemcode=$("#itemcode").val();
-        var CGST=$("#CGST").val();
-        var SGST=$("#SGST").val();
+        var cgst=$("#cgst").val();
+        var sgst=$("#sgst").val();
         var unitid=$("#unitid").val();
         var description=$("#description").val();
         var discountapplicable=$("#discountapplicable").val();
         var companyid=$("#companyid").val();
+        var sellingprice=$("#sellingprice").val();
 
         var data={
             "name": name,
             "hsncode":hsncode, 
             "categoryid":categoryid, 
             "itemcode":itemcode, 
-            "cgst":CGST,
-            "sgst":SGST,
+            "cgst":cgst,
+            "sgst":sgst,
             "unitid":unitid,
+            "sellingprice":sellingprice,
             "description":description, 
             "discount_applicable":discountapplicable,
             "companyid":companyid
@@ -314,7 +335,7 @@ $("#submit").click(function(){
     success: function() {
         console.log("success")
     }
-})//.then(window.location.replace("/item/"+location.pathname.split("/")[2]));
+}).then(window.location.replace("/item/"+location.pathname.split("/")[2]));
 });
 
 $("#delete").click(function(){

@@ -1,7 +1,7 @@
 const knex = require( "../../knex.js" );
 const express=require("express");
 const router = express.Router();
-const args ="company";
+const args = "company";
 
 router.post( "/company/new", ( req, res ) => {
     const data = req.body;
@@ -46,7 +46,7 @@ router.put( `/${ args }/:id/edit`, ( req, res ) => {
         .then( () => {
             console.log(req.body);
             res.setHeader( "Content-Type", "application/json" );
-            res.redirect( 301, `/${ args`/${ req.params.id }` }` );
+            res.redirect( 200, `/${ args`/${ req.params.id }` }` );
         } )
         .catch( ( error ) => {
             console.log("kljkljkjlkkjl",req.body);

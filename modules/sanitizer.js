@@ -1,11 +1,8 @@
-function sanitizeNumber( a ) {
+module.exports={ 
+    sanitizeNumber : function ( a ) {
     if ( a.trim() === "" ) {
         return null;
     }
-
     return Number( a );
 }
-
-module.export = {
-    sanitizeNumber,
-};
+}
