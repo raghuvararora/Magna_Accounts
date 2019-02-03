@@ -39,7 +39,7 @@ router.post( "/item/new", ( req, res ) => {
 router.put( `/${ args }/:id/edit`, ( req, res ) => {
     const data = req.body;
     console.log( "here", req.body );
-    const inpdata={
+    const inpdata = {
         name: data.name,
         categoryid: sanitizer.sanitizeNumber( data.categoryid ),
         itemcode: sanitizer.sanitizeNumber( data.itemcode ),
