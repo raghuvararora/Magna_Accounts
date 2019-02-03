@@ -41,7 +41,7 @@ router.put( `/${ args }/:id/edit`, ( req, res ) => {
     console.log( "here", req.body );
     const inpdata={
         name: data.name,
-        categoryid: (sanitizer.sanitizeNumber( data.categoryid )),
+        categoryid: sanitizer.sanitizeNumber( data.categoryid ),
         itemcode: sanitizer.sanitizeNumber( data.itemcode ),
         hsncode: data.hsncode,
         sellingprice: sanitizer.sanitizeNumber( data.sellingprice ),
