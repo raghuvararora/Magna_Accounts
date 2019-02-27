@@ -16,7 +16,7 @@ const knex = require( "knex" )( {
         host: "85.10.205.173",
         user: "raghuvar",
         server: "127.0.0.1",
-        port: 3306,
+        port: 3307,
         password: "qwert123",
         // socketPath: "/var/run/mysqld/mysqld.sock",
         charset : 'utf8mb4',
