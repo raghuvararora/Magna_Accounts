@@ -27,7 +27,7 @@ const knex = require( "knex" )( {
 
 // knex( "item_master" )
 //     .insert( {
-//         name: "kjkjjk",
+//         name: "kjfdsfkjjk",
 //         hsncode: "" || null,
         
 //     } ).catch( error => ( console.log( error ) ) );
